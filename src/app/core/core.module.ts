@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InitComponent } from './init.component';
@@ -30,7 +31,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot ( routes )
+    RouterModule.forRoot ( routes ),
+    SharedModule
   ],
   declarations: [InitComponent],
   exports : [InitComponent]
