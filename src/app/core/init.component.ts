@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./init.component.css']
 })
 export class InitComponent implements OnInit {
+  static version = '0.0.1';
+  static nombreClaveVersion = 'Ra';
 
   static hayUsuarios = false;
   static hayJugador = true;
@@ -30,5 +32,8 @@ export class InitComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  getVersionNumber() { return InitComponent.version; }
+  getNombreClaveVersion() { return InitComponent.nombreClaveVersion; }
 
 }

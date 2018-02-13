@@ -4,3 +4,5 @@ body{ padding:0;margin:0 }
     font-family: Roboto; font-size: 24px; color:black; text-align: center;text-shadow: 2px 2px 2px gainsboro;font-weight: bolder;
     background: linear-gradient(to right, peachpuff , white);
 }
+
+.version { padding-left:20px;font-family: Roboto; font-size: 14px; color:gray; text-align: center;text-shadow: 2px 2px 2px gainsboro;}
