@@ -1,3 +1,4 @@
+import { DBlocal } from './../shared/Persistencia';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -15,19 +16,41 @@ export class InitComponent implements OnInit {
   static nivelJugador = 2;
 
   constructor(private router: Router) {
-    if (InitComponent.hayUsuarios === true) {
-      if (InitComponent.hayJugador === true) {
-          if (InitComponent.nivelJugador === 1) {
-            this.router.navigate(['tutorial']);
+    DBlocal.inicializa();
+
+    console.log('paso 1');
+    const self = this;
+    DBlocal.numRegistros('usuarios_').then (
+      function (numRegistros) {
+        if (numRegistros > 0 ) { InitComponent.hayUsuarios = true; }
+
+
+        console.log('numUsuarios', numRegistros);
+
+        if (InitComponent.hayUsuarios === true) {
+          const p2 = DBlocal.db.get('usuarios').then(function (docUsuarios) {
+            console.log(docUsuarios);
+            InitComponent.hayJugador = (docUsuarios.usuario !== '');
+            if (InitComponent.hayJugador === true) {
+              if (InitComponent.nivelJugador === 1) {
+                self.router.navigate(['tutorial']);
+              } else {
+                self.router.navigate(['main']);
+              }
           } else {
-            this.router.navigate(['main']);
+            self.router.navigate(['login']);
           }
-      } else {
-        this.router.navigate(['login']);
-      }
-    } else {
-      this.router.navigate(['register']);
-    }
+        });
+        } else {
+          self.router.navigate(['register']);
+        }
+
+
+
+
+      });
+
+    console.log('paso 3');
   }
 
   ngOnInit() {
