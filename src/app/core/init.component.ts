@@ -15,7 +15,10 @@ export class InitComponent implements OnInit {
   static hayJugador = true;
   static nivelJugador = 1;
 
+  static myrouter: Router;
+
   constructor(private router: Router) {
+    InitComponent.myrouter = router;
     DBlocal.inicializa();
 
     const self = this;
@@ -38,7 +41,7 @@ export class InitComponent implements OnInit {
                     }
                   });
                 });
-              }else  {
+              } else  {
                 self.router.navigate(['login']);
               }
             }).catch( function() {
@@ -50,6 +53,10 @@ export class InitComponent implements OnInit {
       }).catch ( function () {
         self.router.navigate(['register']);
       });
+  }
+
+  public static gotoLogin() {
+    InitComponent.myrouter.navigate(['login']);
   }
 
   ngOnInit() {

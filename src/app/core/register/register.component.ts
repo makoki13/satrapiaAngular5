@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InitComponent } from '../init.component';
 
 @Component({
   selector: 'sat-register',
@@ -10,6 +11,11 @@ export class RegisterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  registra() {
+    // alert('En obras');
+    InitComponent.gotoLogin();
   }
 
 }
