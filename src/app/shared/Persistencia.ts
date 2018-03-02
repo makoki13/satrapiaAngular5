@@ -21,7 +21,6 @@ export class DBlocal {
 
   static async inicializa () {
     DBlocal.db = new PouchDB('satrapia');
-    DBlocal.__erase();
   }
 
   static numRegistros(cadena: string) {

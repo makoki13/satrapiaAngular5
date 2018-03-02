@@ -4,16 +4,17 @@
 		<div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-				<h5>Registra tu usuario.</h5>
-					
+				<h5>Registra tu usuario.</h5>					
 
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Nombre</label>
-							<div class="cols-sm-10">
+							<div class="cols-sm-7" style="display:inline-block">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Introduce tu nombre"/>
-								</div>
+									<input type="text" #nombre class="form-control" name="name" id="name"  placeholder="Introduce tu nombre (mínimo 3 caracteres)" 
+										(keypress)="controlNameKeypress($event);" (keyup)="testNombre();">
+									<img #imgNombre id="nombre-icono" class="icono" src="">
+								</div>							
 							</div>
 						</div>
 
@@ -22,7 +23,8 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Introduce tu dirección de correo electrónico"/>
+									<input type="text" #email class="form-control" name="email" id="email"  placeholder="Introduce tu dirección de correo electrónico"/>
+									<img id="email-icono" class="icono" src="../../../assets/no.png">
 								</div>
 							</div>
 						</div>
@@ -33,6 +35,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="username" id="username"  placeholder="Indica tu nombre de jugador"/>
+									<img id="jugador-icono" class="icono" src="../../../assets/no.png">
 								</div>
 							</div>
 						</div>
@@ -43,6 +46,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<input type="password" class="form-control" name="password" id="password"  placeholder="Introduce una contraseña"/>
+									<img id="password-icono" class="icono" src="../../../assets/no.png">
 								</div>
 							</div>
 						</div>
@@ -53,12 +57,13 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Vuelve a introducir la misma contraseña"/>
+									<img id="password-confirm-icono" class="icono" src="../../../assets/no.png">
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group ">
-							<button (click)="registra()" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</button>
+							<button (click)="registra()" id="button" class="btn btn-primary btn-lg btn-block login-button" [disabled]="!verificaFormulario()">Registrar</button>
 						</div>
 
 					
