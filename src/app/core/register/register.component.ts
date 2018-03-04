@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
     if (caracter === 13) {
       this.email.nativeElement.focus();
     }
+
     // alert(this.nombre.nativeElement.value.length);
   }
 
